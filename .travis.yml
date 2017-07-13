@@ -17,4 +17,10 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
 
-script: npm test --watch=false
+before_script:
+- npm install -g angular-cli
+- npm install -g karma
+- npm install
+- ng build
+
+script: karma start config/karma.conf.js --single-run
